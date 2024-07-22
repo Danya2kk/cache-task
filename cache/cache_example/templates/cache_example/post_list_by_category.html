@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posts in {{ category.name }}</title>
+</head>
+<body>
+    <h1>Posts in {{ category.name }}</h1>
+    <ul>
+        {% for post in posts %}
+            <li> <h4>Название: {{ post.title }}</h4> <h4>Описание: </h4>{{ post.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

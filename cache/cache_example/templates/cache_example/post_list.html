@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posts</title>
+</head>
+<body>
+    <h1>Posts</h1>
+
+    <nav>
+        <label for="category-select">Выберите категорию:</label>
+        <select id="category-select" onchange="location = this.value;">
+            <option value="">Select a category</option>
+            {% for category in categories %}
+                <option value="{% url 'post_list_by_category' category.id %}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </nav>
+
+    <ul>
+        {% load cache %}
+        {% cache 30 post_list %}
+            {% for post in posts %}
+                <li>{{ post.title }}: {{ post.content }}</li>
+            {% endfor %}
+        {% endcache %}
+    </ul>
+</body>
+</html>
